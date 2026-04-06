@@ -1,0 +1,232 @@
+/* Workshop Status Page - Django Template Match */
+
+/* Page Container */
+.workshop-status-page {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  padding: 20px 0;
+}
+
+/* Container */
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Jumbotron Welcome Section */
+.jumbotron {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 60px 40px;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 40px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.jumbotron h1 {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.jumbotron p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.jumbotron strong {
+  color: #ffd700;
+  font-weight: 600;
+}
+
+/* Table Heading */
+.table-heading {
+  color: #04a9cf;
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Table Styles */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 40px;
+}
+
+.table-striped {
+  border: 1px solid #dee2e6;
+}
+
+.table-striped thead th {
+  background-color: #f8f9fa;
+  color: #495057;
+  font-weight: 600;
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 2px solid #dee2e6;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+.table-striped tbody td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #dee2e6;
+  vertical-align: middle;
+}
+
+.table-striped tbody tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+.table-striped tbody tr:hover {
+  background-color: #e9ecef;
+}
+
+/* Responsive Table */
+.table-responsive-sm {
+  font-size: 14px;
+}
+
+/* Badge Styles */
+.badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.badge-success {
+  background-color: #28a745;
+  color: white;
+}
+
+.badge-warning {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+.badge-secondary {
+  background-color: #6c757d;
+  color: white;
+}
+
+/* Links */
+.table a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.table a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* Text Center */
+.text-center {
+  text-align: center;
+}
+
+/* Spacing */
+br {
+  line-height: 40px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 10px;
+  }
+  
+  .jumbotron {
+    padding: 40px 20px;
+    margin-bottom: 30px;
+  }
+  
+  .jumbotron h1 {
+    font-size: 28px;
+  }
+  
+  .jumbotron p {
+    font-size: 16px;
+  }
+  
+  .table-heading {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  
+  .table {
+    font-size: 12px;
+  }
+  
+  .table-striped thead th {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+  
+  .table-striped tbody td {
+    padding: 8px 10px;
+  }
+  
+  .badge {
+    font-size: 10px;
+    padding: 4px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 5px;
+  }
+  
+  .jumbotron {
+    padding: 30px 15px;
+  }
+  
+  .jumbotron h1 {
+    font-size: 24px;
+  }
+  
+  .jumbotron p {
+    font-size: 14px;
+  }
+  
+  .table-heading {
+    font-size: 18px;
+  }
+  
+  .table {
+    font-size: 11px;
+  }
+  
+  .table-striped thead th {
+    padding: 6px 8px;
+    font-size: 11px;
+  }
+  
+  .table-striped tbody td {
+    padding: 6px 8px;
+  }
+  
+  .badge {
+    font-size: 9px;
+    padding: 3px 6px;
+  }
+}
