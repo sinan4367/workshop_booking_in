@@ -182,6 +182,7 @@ const LoginForm = ({ onLogin, onSwitchToRegister }) => {
             type="submit"
             className={`btn-primary auth-submit ${isLoading ? "loading" : ""}`}
             disabled={isLoading}
+            aria-disabled={isLoading}
           >
             {isLoading ? (
               <>
