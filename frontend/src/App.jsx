@@ -8,6 +8,7 @@ import CoordinatorDashboard from "./components/CoordinatorDashboard";
 import InstructorDashboard from "./components/InstructorDashboard";
 import CoordinatorWorkshopStatus from "./components/CoordinatorWorkshopStatus";
 import InstructorWorkshopStatus from "./components/InstructorWorkshopStatus";
+import WorkshopProposal from "./components/WorkshopProposal";
 import "./App.css";
 
 const App = () => {
@@ -74,6 +75,14 @@ const App = () => {
     // Navigate to workshop types page
     if (path === "/workshop/types") {
       setCurrentView("workshop-types");
+    }
+    // Navigate to workshop proposal page
+    if (path === "/workshop/propose") {
+      setCurrentView("workshop-proposal");
+    }
+    // Navigate to team statistics page
+    if (path === "/statistics/team") {
+      setCurrentView("statistics");
     }
   };
 
@@ -144,6 +153,23 @@ const App = () => {
           ) : (
             <CoordinatorWorkshopStatus user={user} />
           )}
+        </main>
+      </div>
+    );
+  }
+
+  // Render workshop proposal page
+  if (currentView === "workshop-proposal") {
+    return (
+      <div className="app-container">
+        <Navbar
+          user={user}
+          currentPage={currentPage}
+          onNavigate={handleNavigate}
+          onLogout={handleLogout}
+        />
+        <main className="main-content">
+          <WorkshopProposal user={user} />
         </main>
       </div>
     );
