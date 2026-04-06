@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import LoginForm from "./components/LoginForm";
 import RegisterForm from "./components/RegisterForm";
 import WorkshopStatistics from "./components/WorkshopStatistics";
+import TeamStatistics from "./components/TeamStatistics";
 import WorkshopTypes from "./components/WorkshopTypes";
 import CoordinatorDashboard from "./components/CoordinatorDashboard";
 import InstructorDashboard from "./components/InstructorDashboard";
@@ -68,6 +69,10 @@ const App = () => {
     if (path === "/statistics/public") {
       setCurrentView("statistics");
     }
+    // Navigate to team statistics page
+    if (path === "/statistics/team") {
+      setCurrentView("team-statistics");
+    }
     // Navigate to workshop status page
     if (path === "/workshop/status") {
       setCurrentView("workshop-status");
@@ -80,10 +85,6 @@ const App = () => {
     if (path === "/workshop/propose") {
       setCurrentView("workshop-proposal");
     }
-    // Navigate to team statistics page
-    if (path === "/statistics/team") {
-      setCurrentView("statistics");
-    }
   };
 
   // Render login page
@@ -95,10 +96,12 @@ const App = () => {
           currentPage={currentPage}
           onNavigate={handleNavigate}
         />
-        <LoginForm
-          onLogin={handleLogin}
-          onSwitchToRegister={() => setCurrentView("register")}
-        />
+        <main className="main-content">
+          <LoginForm
+            onLogin={handleLogin}
+            onSwitchToRegister={() => setCurrentView("register")}
+          />
+        </main>
       </div>
     );
   }
@@ -112,10 +115,12 @@ const App = () => {
           currentPage={currentPage}
           onNavigate={handleNavigate}
         />
-        <RegisterForm
-          onRegister={handleRegister}
-          onSwitchToLogin={() => setCurrentView("login")}
-        />
+        <main className="main-content">
+          <RegisterForm
+            onRegister={handleRegister}
+            onSwitchToLogin={() => setCurrentView("login")}
+          />
+        </main>
       </div>
     );
   }
@@ -132,6 +137,23 @@ const App = () => {
         />
         <main className="main-content">
           <WorkshopStatistics />
+        </main>
+      </div>
+    );
+  }
+
+  // Render team statistics page
+  if (currentView === "team-statistics") {
+    return (
+      <div className="app-container">
+        <Navbar
+          user={user}
+          currentPage={currentPage}
+          onNavigate={handleNavigate}
+          onLogout={handleLogout}
+        />
+        <main className="main-content">
+          <TeamStatistics />
         </main>
       </div>
     );
@@ -186,7 +208,7 @@ const App = () => {
           onLogout={handleLogout}
         />
         <main className="main-content">
-          <WorkshopTypes />
+          <WorkshopTypes user={user} />
         </main>
       </div>
     );

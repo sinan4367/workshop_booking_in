@@ -2,7 +2,6 @@
 
 /* Main Container */
 .workshop-proposal {
-  padding: 80px 20px 20px;
   background: #f8fafc;
   min-height: 100vh;
   display: flex;
@@ -403,7 +402,6 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .workshop-proposal {
-    padding: 100px 16px 16px;
     align-items: flex-start;
   }
   
