@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import LoginForm from "./components/LoginForm";
 import RegisterForm from "./components/RegisterForm";
+import WorkshopStatistics from "./components/WorkshopStatistics";
 import "./App.css";
 
 const App = () => {
-  // State for current view: 'login', 'register', 'dashboard'
+  // State for current view: 'login', 'register', 'dashboard', 'statistics'
   const [currentView, setCurrentView] = useState("login");
   const [user, setUser] = useState(null);
   const [currentPage, setCurrentPage] = useState("/");
@@ -51,6 +52,16 @@ const App = () => {
   // Handle navigation (for demo purposes)
   const handleNavigate = (path) => {
     setCurrentPage(path);
+    // Switch to dashboard view when navigating to other pages
+    if (currentView === "login" || currentView === "register") {
+      if (user) {
+        setCurrentView("dashboard");
+      }
+    }
+    // Navigate to statistics page
+    if (path === "/statistics/public") {
+      setCurrentView("statistics");
+    }
   };
 
   // Render login page
@@ -87,6 +98,23 @@ const App = () => {
     );
   }
 
+  // Render statistics page
+  if (currentView === "statistics") {
+    return (
+      <div className="app-container">
+        <Navbar
+          user={user}
+          currentPage={currentPage}
+          onNavigate={handleNavigate}
+          onLogout={handleLogout}
+        />
+        <main className="main-content">
+          <WorkshopStatistics />
+        </main>
+      </div>
+    );
+  }
+
   // Render dashboard (authenticated views)
   return (
     <div className="app-container">
@@ -100,6 +128,27 @@ const App = () => {
       {/* Main Content */}
       <main className="main-content">
         <div className="container">
+          {/* Back to Dashboard button */}
+          <button
+            onClick={() => setCurrentPage("/")}
+            className="mb-4 inline-flex items-center gap-2 px-3 py-2 text-sm text-gray-600 hover:text-gray-900 transition-colors"
+          >
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 19l-7-7 7-7"
+              />
+            </svg>
+            Back to Dashboard
+          </button>
+
           {/* Welcome Card */}
           <div className="welcome-card">
             <div className="welcome-header">
