@@ -1,166 +1,192 @@
 import React, { useState } from 'react';
 import './WorkshopStatus.css';
 
-const WorkshopStatus = () => {
-  const [user] = useState({
-    firstName: 'John',
-    isAuthenticated: true
-  });
-
-  // Mock data for workshops
-  const mockWorkshops = {
-    accepted: [
-      {
-        id: 1,
-        workshopType: 'Python Programming',
-        instructorName: 'Dr. Sarah Johnson',
-        date: '2024-01-15',
-        status: 'Accepted'
-      },
-      {
-        id: 2,
-        workshopType: 'Data Science Basics',
-        instructorName: 'Prof. Michael Chen',
-        date: '2024-01-20',
-        status: 'Accepted'
-      },
-      {
-        id: 3,
-        workshopType: 'Machine Learning',
-        instructorName: 'Dr. Lisa Anderson',
-        date: '2024-01-25',
-        status: 'Accepted'
-      }
-    ],
-    proposed: [
-      {
-        id: 4,
-        workshopType: 'Web Development',
-        date: '2024-02-01',
-        status: 'Pending'
-      },
-      {
-        id: 5,
-        workshopType: 'Cloud Computing',
-        date: '2024-02-05',
-        status: 'Pending'
-      },
-      {
-        id: 6,
-        workshopType: 'Cybersecurity',
-        date: '2024-02-10',
-        status: 'Pending'
-      }
-    ]
-  };
-
-  const getStatusBadgeClass = (status) => {
-    switch (status) {
-      case 'Accepted':
-        return 'badge-success';
-      case 'Pending':
-        return 'badge-warning';
-      default:
-        return 'badge-secondary';
+const WorkshopStatus = ({ user }) => {
+  // Mock data for instructor workshops
+  const [acceptedWorkshops] = useState([
+    {
+      id: 1,
+      coordinatorName: 'Jane Smith',
+      institute: 'FOSSEE',
+      workshopName: 'Python Programming',
+      workshopDay: '2024-01-15',
+      status: 'Accepted'
+    },
+    {
+      id: 2,
+      coordinatorName: 'John Doe',
+      institute: 'IIT Bombay',
+      workshopName: 'Data Science',
+      workshopDay: '2024-01-20',
+      status: 'Accepted'
     }
-  };
+  ]);
 
-  const hasWorkshops = mockWorkshops.accepted.length > 0 || mockWorkshops.proposed.length > 0;
+  const [proposedWorkshops] = useState([
+    {
+      id: 3,
+      coordinatorName: 'Alice Johnson',
+      institute: 'MIT',
+      workshopName: 'Machine Learning',
+      workshopDay: '2024-02-01',
+      status: 'Pending',
+      action: 'Accept'
+    },
+    {
+      id: 4,
+      coordinatorName: 'Bob Wilson',
+      institute: 'Stanford',
+      workshopName: 'Web Development',
+      workshopDay: '2024-02-05',
+      status: 'Pending',
+      action: 'Accept'
+    }
+  ]);
+
+  const isCoordinator = user?.role === 'coordinator';
+  const isInstructor = user?.role === 'instructor';
 
   return (
     <div className="workshop-status-page">
-      {/* Welcome Message for Empty State */}
-      {!hasWorkshops && (
-        <div className="container">
-          <div className="jumbotron">
-            <h1>Welcome {user.firstName}</h1>
-            <p>
-              Information related to your workshops will be shown here, you can also 
-              propose a workshop as per your available date in <strong>Propose Workshop tab</strong>.
-            </p>
+      {/* Welcome Section for empty state */}
+      {isInstructor && acceptedWorkshops.length === 0 && proposedWorkshops.length === 0 && (
+        <div className="jumbotron">
+          <h1>Welcome {user?.firstName || user?.name}</h1>
+          <p>
+            Your workshop related information will be shown here. Please navigate to <b>Workshop list</b> and
+            depending upon your expertise and availability create a workshop by going to
+            <b>Create Workshop</b>.
+          </p>
+        </div>
+      )}
+
+      {/* Instructor View */}
+      {isInstructor && (acceptedWorkshops.length > 0 || proposedWorkshops.length > 0) && (
+        <>
+          <h3 className="text-center">The status of your workshops</h3>
+          <br />
+
+          {/* Accepted Workshops */}
+          <div className="container">
+            <h3 className="text-center table-heading">
+              <strong>Workshops Accepted</strong>
+            </h3>
+            <table className="table table-striped table-responsive-sm">
+              <thead>
+                <tr>
+                  <th>Coordinator Name</th>
+                  <th>Institute</th>
+                  <th>Workshop Name</th>
+                  <th>Workshop Day</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {acceptedWorkshops.map((workshop) => (
+                  <tr key={workshop.id}>
+                    <td>{workshop.coordinatorName}</td>
+                    <td>{workshop.institute}</td>
+                    <td>{workshop.workshopName}</td>
+                    <td>{workshop.workshopDay}</td>
+                    <td>
+                      <span className="badge badge-success">{workshop.status}</span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-        </div>
-      )}
 
-      {/* Workshop Status Header */}
-      {hasWorkshops && (
-        <h3 className="text-center table-heading">
-          <strong>The status of your workshops</strong>
-        </h3>
-      )}
-
-      <br />
-
-      {/* Accepted Workshops Table */}
-      {mockWorkshops.accepted.length > 0 && (
-        <div className="container">
-          <h3 className="text-center table-heading">
-            <strong>Workshops Accepted</strong>
-          </h3>
-          <table className="table table-striped table-responsive-sm">
-            <thead>
-              <tr>
-                <th>Workshop Name</th>
-                <th>Instructor Name</th>
-                <th>Workshop Day</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {mockWorkshops.accepted.map((workshop) => (
-                <tr key={workshop.id}>
-                  <td>
-                    <a href={`/workshop-details/${workshop.id}`}>
-                      {workshop.workshopType}
-                    </a>
-                  </td>
-                  <td>{workshop.instructorName}</td>
-                  <td>{workshop.date}</td>
-                  <td>
-                    <span className={`badge ${getStatusBadgeClass(workshop.status)}`}>
-                      {workshop.status}
-                    </span>
-                  </td>
+          {/* Proposed Workshops */}
+          <br />
+          <div className="container">
+            <h3 className="text-center table-heading">
+              <strong>Workshops Proposed By Coordinators</strong>
+            </h3>
+            <table className="table table-striped table-responsive-sm">
+              <thead>
+                <tr>
+                  <th>Coordinator Name</th>
+                  <th>Institute</th>
+                  <th>Workshop Name</th>
+                  <th>Workshop Day</th>
+                  <th>Status</th>
+                  <th>Action</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              <tbody>
+                {proposedWorkshops.map((workshop) => (
+                  <tr key={workshop.id}>
+                    <td>{workshop.coordinatorName}</td>
+                    <td>{workshop.institute}</td>
+                    <td>{workshop.workshopName}</td>
+                    <td>{workshop.workshopDay}</td>
+                    <td>
+                      <span className="badge badge-warning">{workshop.status}</span>
+                    </td>
+                    <td>
+                      <button className="btn btn-primary btn-sm">
+                        {workshop.action}
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
       )}
 
-      {/* Proposed Workshops Table */}
-      {mockWorkshops.proposed.length > 0 && (
-        <div className="container">
-          <h3 className="text-center table-heading">
-            <strong>Workshops Proposed By Me</strong>
-          </h3>
-          <table className="table table-striped table-responsive-sm">
-            <thead>
-              <tr>
-                <th>Workshop Name</th>
-                <th>Workshop Day</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {mockWorkshops.proposed.map((workshop) => (
-                <tr key={workshop.id}>
-                  <td>
-                    <a href={`/workshop-details/${workshop.id}`}>
-                      {workshop.workshopType}
-                    </a>
-                  </td>
-                  <td>{workshop.date}</td>
-                  <td>
-                    <span className={`badge ${getStatusBadgeClass(workshop.status)}`}>
-                      {workshop.status}
-                    </span>
-                  </td>
+      {/* Coordinator View */}
+      {isCoordinator && (
+        <>
+          <div className="container">
+            <h1 className="page-title">Workshop Status</h1>
+            <p className="page-subtitle">Track the status of your workshop proposals</p>
+          </div>
+
+          {/* Accepted Workshops */}
+          <div className="container">
+            <h2 className="section-title">Workshops Accepted</h2>
+            <table className="workshop-table">
+              <thead>
+                <tr>
+                  <th>Workshop Name</th>
+                  <th>Workshop Day</th>
+                  <th>Status</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Python Programming</td>
+                  <td>2024-01-15</td>
+                  <td><span className="badge accepted">Accepted</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          {/* Proposed Workshops */}
+          <div className="container">
+            <h2 className="section-title">Workshops Proposed By Me</h2>
+            <table className="workshop-table">
+              <thead>
+                <tr>
+                  <th>Workshop Type</th>
+                  <th>Workshop Day</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Data Science</td>
+                  <td>2024-02-01</td>
+                  <td><span className="badge pending">Pending</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </>
       )}
     </div>
   );

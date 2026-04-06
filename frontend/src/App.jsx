@@ -3,9 +3,11 @@ import Navbar from "./components/Navbar";
 import LoginForm from "./components/LoginForm";
 import RegisterForm from "./components/RegisterForm";
 import WorkshopStatistics from "./components/WorkshopStatistics";
-import WorkshopStatus from "./components/WorkshopStatus";
 import WorkshopTypes from "./components/WorkshopTypes";
 import CoordinatorDashboard from "./components/CoordinatorDashboard";
+import InstructorDashboard from "./components/InstructorDashboard";
+import CoordinatorWorkshopStatus from "./components/CoordinatorWorkshopStatus";
+import InstructorWorkshopStatus from "./components/InstructorWorkshopStatus";
 import "./App.css";
 
 const App = () => {
@@ -127,7 +129,7 @@ const App = () => {
   }
 
   // Render workshop status page
-  if (currentView === "workshop-status") {
+    if (currentView === "workshop-status") {
     return (
       <div className="app-container">
         <Navbar
@@ -137,7 +139,11 @@ const App = () => {
           onLogout={handleLogout}
         />
         <main className="main-content">
-          <WorkshopStatus />
+          {user?.role === "instructor" ? (
+            <InstructorWorkshopStatus user={user} />
+          ) : (
+            <CoordinatorWorkshopStatus user={user} />
+          )}
         </main>
       </div>
     );
@@ -161,21 +167,25 @@ const App = () => {
   }
 
   // Render dashboard (authenticated views)
-  return (
-    <div className="app-container">
-      <Navbar
-        user={user}
-        currentPage={currentPage}
-        onNavigate={handleNavigate}
-        onLogout={handleLogout}
-      />
+    return (
+      <div className="app-container">
+        <Navbar
+          user={user}
+          currentPage={currentPage}
+          onNavigate={handleNavigate}
+          onLogout={handleLogout}
+        />
 
-      {/* Main Content */}
-      <main className="main-content">
-        <CoordinatorDashboard user={user} />
-      </main>
-    </div>
-  );
+        {/* Main Content */}
+        <main className="main-content">
+          {user?.role === "instructor" ? (
+            <InstructorDashboard user={user} onNavigate={handleNavigate} />
+          ) : (
+            <CoordinatorDashboard user={user} onNavigate={handleNavigate} />
+          )}
+        </main>
+      </div>
+    );
 };
 
 export default App;
