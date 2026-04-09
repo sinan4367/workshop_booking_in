@@ -59,12 +59,24 @@ const App = () => {
   // Handle navigation (for demo purposes)
   const handleNavigate = (path) => {
     setCurrentPage(path);
+    
+    // Navigate to home/dashboard
+    if (path === "/") {
+      if (user) {
+        setCurrentView("dashboard");
+      } else {
+        setCurrentView("login");
+      }
+      return;
+    }
+    
     // Switch to dashboard view when navigating to other pages
     if (currentView === "login" || currentView === "register") {
       if (user) {
         setCurrentView("dashboard");
       }
     }
+    
     // Navigate to statistics page
     if (path === "/statistics/public") {
       setCurrentView("statistics");
@@ -136,7 +148,7 @@ const App = () => {
           onLogout={handleLogout}
         />
         <main className="main-content">
-          <WorkshopStatistics />
+          <WorkshopStatistics onNavigate={handleNavigate} />
         </main>
       </div>
     );

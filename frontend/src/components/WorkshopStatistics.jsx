@@ -5,7 +5,7 @@ import './WorkshopStatistics.css';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-const WorkshopStatistics = () => {
+const WorkshopStatistics = ({ onNavigate }) => {
   const [filters, setFilters] = useState({
     fromDate: '',
     toDate: '',
@@ -129,8 +129,18 @@ const WorkshopStatistics = () => {
     <div className="workshop-statistics-page">
       {/* Page Title */}
       <div className="page-header">
-        <h1 className="page-title">Workshop Statistics</h1>
-        <p className="page-subtitle">View and analyze workshop data across different states and types</p>
+        <div className="header-content">
+          <div>
+            <h1 className="page-title">Workshop Statistics</h1>
+            <p className="page-subtitle">View and analyze workshop data across different states and types</p>
+          </div>
+          <button
+            onClick={() => onNavigate('/')}
+            className="back-home-button"
+          >
+            ← Back to Home
+          </button>
+        </div>
       </div>
 
       {/* Main Layout Grid */}

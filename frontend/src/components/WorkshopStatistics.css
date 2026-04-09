@@ -14,6 +14,35 @@
   margin-bottom: 32px;
 }
 
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.back-home-button {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.back-home-button:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
+}
+
+.back-home-button:active {
+  transform: translateY(0);
+}
+
 .page-title {
   font-size: 24px;
   font-weight: 600;
@@ -40,6 +69,30 @@
   .main-layout {
     grid-template-columns: 1fr;
     gap: 20px;
+  }
+  
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  
+  .back-home-button {
+    align-self: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  
+  .back-home-button {
+    align-self: center;
+    width: 100%;
+    max-width: 200px;
   }
 }
 
@@ -314,16 +367,77 @@
 /* Mobile Responsive Adjustments */
 @media (max-width: 768px) {
   .workshop-statistics-page {
-    padding: 16px;
+    padding: 12px;
   }
   
-  .filters-card,
-  .table-card {
-    padding: 16px;
+  .page-header {
+    margin-bottom: 20px;
   }
   
   .page-title {
-    font-size: 20px;
+    font-size: 18px;
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+  
+  .page-subtitle {
+    font-size: 13px;
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+  
+  .main-layout {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .filters-card {
+    padding: 16px;
+    border-radius: 8px;
+  }
+  
+  .filters-header {
+    margin-bottom: 16px;
+  }
+  
+  .filters-title {
+    font-size: 16px;
+  }
+  
+  .clear-button {
+    font-size: 12px;
+    padding: 3px 6px;
+  }
+  
+  .filters-content {
+    gap: 12px;
+  }
+  
+  .form-group {
+    gap: 3px;
+  }
+  
+  .form-label {
+    font-size: 13px;
+  }
+  
+  .form-input {
+    padding: 8px 10px;
+    font-size: 14px;
+    border-radius: 6px;
+  }
+  
+  .table-card {
+    padding: 16px;
+    border-radius: 8px;
+  }
+  
+  .table-header {
+    margin-bottom: 16px;
+  }
+  
+  .table-title {
+    font-size: 16px;
   }
   
   .top-row {
@@ -334,31 +448,367 @@
   
   .chart-buttons {
     justify-content: center;
+    gap: 8px;
+  }
+  
+  .chart-button {
+    padding: 8px 12px;
+    font-size: 12px;
+    border-radius: 6px;
   }
   
   .filter-buttons {
     flex-direction: column;
+    gap: 8px;
+  }
+  
+  .filter-button {
+    padding: 8px 12px;
+    font-size: 12px;
+    border-radius: 6px;
+  }
+  
+  .table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .data-table {
+    font-size: 12px;
   }
   
   .table-header-cell,
   .table-cell {
-    padding: 8px 12px;
+    padding: 8px 10px;
     font-size: 12px;
+    white-space: nowrap;
+  }
+  
+  .table-header-cell {
+    font-weight: 600;
+  }
+  
+  .modal-content {
+    margin: 12px;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .modal-header {
+    margin-bottom: 16px;
+  }
+  
+  .modal-title {
+    font-size: 16px;
+  }
+  
+  .modal-close {
+    padding: 6px;
+    width: 28px;
+    height: 28px;
+  }
+  
+  .modal-body {
+    height: 300px;
   }
 }
 
 @media (max-width: 480px) {
   .workshop-statistics-page {
-    padding: 12px;
+    padding: 8px;
   }
   
-  .filters-card,
+  .page-header {
+    margin-bottom: 16px;
+  }
+  
+  .page-title {
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+  
+  .page-subtitle {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+  
+  .main-layout {
+    gap: 12px;
+  }
+  
+  .filters-card {
+    padding: 12px;
+    border-radius: 6px;
+  }
+  
+  .filters-header {
+    margin-bottom: 12px;
+  }
+  
+  .filters-title {
+    font-size: 14px;
+  }
+  
+  .clear-button {
+    font-size: 11px;
+    padding: 2px 4px;
+  }
+  
+  .filters-content {
+    gap: 10px;
+  }
+  
+  .form-group {
+    gap: 2px;
+  }
+  
+  .form-label {
+    font-size: 12px;
+  }
+  
+  .form-input {
+    padding: 8px 8px;
+    font-size: 13px;
+    border-radius: 4px;
+  }
+  
   .table-card {
     padding: 12px;
+    border-radius: 6px;
+  }
+  
+  .table-header {
+    margin-bottom: 12px;
+  }
+  
+  .table-title {
+    font-size: 14px;
+  }
+  
+  .top-row {
+    gap: 8px;
+  }
+  
+  .chart-buttons {
+    gap: 6px;
+  }
+  
+  .chart-button {
+    padding: 6px 10px;
+    font-size: 11px;
+    border-radius: 4px;
+  }
+  
+  .filter-buttons {
+    gap: 6px;
+  }
+  
+  .filter-button {
+    padding: 6px 10px;
+    font-size: 11px;
+    border-radius: 4px;
+  }
+  
+  .table-wrapper {
+    margin: 0 -8px;
+    padding: 0 8px;
+  }
+  
+  .data-table {
+    font-size: 11px;
+  }
+  
+  .table-header-cell,
+  .table-cell {
+    padding: 6px 8px;
+    font-size: 11px;
   }
   
   .modal-content {
     margin: 8px;
     padding: 16px;
+    border-radius: 6px;
+  }
+  
+  .modal-header {
+    margin-bottom: 12px;
+  }
+  
+  .modal-title {
+    font-size: 14px;
+  }
+  
+  .modal-close {
+    padding: 4px;
+    width: 24px;
+    height: 24px;
+  }
+  
+  .modal-body {
+    height: 250px;
+  }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+  .chart-button {
+    transition: background-color 0.2s ease;
+  }
+  
+  .chart-button:hover {
+    transform: none;
+  }
+  
+  .chart-button:active {
+    background-color: var(--color-primary-hover);
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+  }
+  
+  .filter-button {
+    transition: background-color 0.2s ease;
+  }
+  
+  .filter-button:hover {
+    transform: none;
+  }
+  
+  .filter-button:active {
+    background-color: var(--color-bg-hover);
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+  }
+  
+  .clear-button {
+    transition: background-color 0.2s ease;
+  }
+  
+  .clear-button:hover {
+    transform: none;
+  }
+  
+  .clear-button:active {
+    background-color: #f0f9ff;
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+  }
+  
+  .modal-close {
+    transition: background-color 0.2s ease;
+  }
+  
+  .modal-close:hover {
+    transform: none;
+  }
+  
+  .modal-close:active {
+    background-color: #f3f4f6;
+    transform: scale(0.95);
+    transition: transform 0.1s ease;
+  }
+}
+
+/* Landscape mobile improvements */
+@media (max-height: 600px) and (orientation: landscape) {
+  .workshop-statistics-page {
+    padding: 6px;
+  }
+  
+  .page-header {
+    margin-bottom: 12px;
+  }
+  
+  .page-title {
+    font-size: 14px;
+    margin-bottom: 2px;
+  }
+  
+  .page-subtitle {
+    font-size: 11px;
+    margin-bottom: 8px;
+  }
+  
+  .main-layout {
+    gap: 8px;
+  }
+  
+  .filters-card {
+    padding: 8px;
+  }
+  
+  .filters-header {
+    margin-bottom: 8px;
+  }
+  
+  .filters-title {
+    font-size: 12px;
+  }
+  
+  .filters-content {
+    gap: 6px;
+  }
+  
+  .form-group {
+    gap: 2px;
+  }
+  
+  .form-label {
+    font-size: 11px;
+  }
+  
+  .form-input {
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+  
+  .table-card {
+    padding: 8px;
+  }
+  
+  .table-header {
+    margin-bottom: 8px;
+  }
+  
+  .table-title {
+    font-size: 12px;
+  }
+  
+  .top-row {
+    gap: 6px;
+  }
+  
+  .chart-buttons {
+    gap: 4px;
+  }
+  
+  .chart-button {
+    padding: 4px 8px;
+    font-size: 10px;
+  }
+  
+  .filter-buttons {
+    gap: 4px;
+  }
+  
+  .filter-button {
+    padding: 4px 8px;
+    font-size: 10px;
+  }
+  
+  .modal-content {
+    margin: 4px;
+    padding: 12px;
+  }
+  
+  .modal-header {
+    margin-bottom: 8px;
+  }
+  
+  .modal-title {
+    font-size: 12px;
+  }
+  
+  .modal-body {
+    height: 200px;
   }
 }
