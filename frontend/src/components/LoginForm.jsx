@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./AuthForms.css";
+import ForgotPassword from "./ForgotPassword";
 
 const LoginForm = ({ onLogin, onSwitchToRegister }) => {
   const [formData, setFormData] = useState({
@@ -8,6 +9,15 @@ const LoginForm = ({ onLogin, onSwitchToRegister }) => {
   });
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const [showForgotPassword, setShowForgotPassword] = useState(false);
+
+  const handleForgotPassword = () => {
+    setShowForgotPassword(true);
+  };
+
+  const handleBackToLogin = () => {
+    setShowForgotPassword(false);
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -86,42 +96,45 @@ const LoginForm = ({ onLogin, onSwitchToRegister }) => {
 
   return (
     <div className="auth-container">
-      <div className="auth-card">
-        <div className="auth-header">
-          <div className="auth-logo">
-            <svg
-              width="40"
-              height="40"
-              viewBox="0 0 24 24"
-              fill="none"
-              className="logo-icon"
-            >
-              <path
-                d="M12 2L2 7l10 5 10-5-10-5z"
-                fill="currentColor"
-                opacity="0.9"
-              />
-              <path
-                d="M2 17l10 5 10-5"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M2 12l10 5 10-5"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+      {showForgotPassword ? (
+        <ForgotPassword onBackToLogin={handleBackToLogin} />
+      ) : (
+        <div className="auth-card">
+          <div className="auth-header">
+            <div className="auth-logo">
+              <svg
+                width="40"
+                height="40"
+                viewBox="0 0 24 24"
+                fill="none"
+                className="logo-icon"
+              >
+                <path
+                  d="M12 2L2 7l10 5 10-5-10-5z"
+                  fill="currentColor"
+                  opacity="0.9"
+                />
+                <path
+                  d="M2 17l10 5 10-5"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M2 12l10 5 10-5"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </div>
+            <h1 className="auth-title">Welcome Back</h1>
+            <p className="auth-subtitle">Sign in to FOSSEE Workshops Portal</p>
           </div>
-          <h1 className="auth-title">Welcome Back</h1>
-          <p className="auth-subtitle">Sign in to FOSSEE Workshops Portal</p>
-        </div>
 
-        <form className="auth-form" onSubmit={handleSubmit}>
+          <form className="auth-form" onSubmit={handleSubmit}>
           {errors.nonField && (
             <div className="error-message non-field">
               <svg
@@ -210,7 +223,11 @@ const LoginForm = ({ onLogin, onSwitchToRegister }) => {
             </button>
           </p>
           <p className="auth-switch">
-            <button type="button" className="auth-link">
+            <button 
+              type="button" 
+              className="auth-link"
+              onClick={handleForgotPassword}
+            >
               Forgot password?
             </button>
           </p>
@@ -226,7 +243,8 @@ const LoginForm = ({ onLogin, onSwitchToRegister }) => {
             <code>instructor / demo123</code> - Instructor account
           </div>
         </div>
-      </div>
+        </div>
+      )}
     </div>
   );
 };

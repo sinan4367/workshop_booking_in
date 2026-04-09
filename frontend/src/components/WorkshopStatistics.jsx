@@ -3,9 +3,11 @@ import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Toolti
 import { Bar } from 'react-chartjs-2';
 import './WorkshopStatistics.css';
 
+// Register chart components
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-const WorkshopStatistics = ({ onNavigate }) => {
+function WorkshopStatistics({ onNavigate }) {
+  // State for filters
   const [filters, setFilters] = useState({
     fromDate: '',
     toDate: '',
@@ -14,11 +16,12 @@ const WorkshopStatistics = ({ onNavigate }) => {
     sortBy: 'date'
   });
 
+  // State for chart modals
   const [showStateChart, setShowStateChart] = useState(false);
   const [showWorkshopsChart, setShowWorkshopsChart] = useState(false);
 
-  // Mock data for table
-  const tableData = [
+  // Sample workshop data
+  const workshopData = [
     {
       srNo: 1,
       coordinatorName: 'Dr. Rajesh Kumar',
@@ -85,9 +88,9 @@ const WorkshopStatistics = ({ onNavigate }) => {
     }
   ];
 
-  // Mock data for charts
+  // Chart data for states
   const stateChartData = {
-    labels: ['Maharashtra', 'Delhi', 'Tamil Nadu', 'Karnataka', 'Telangana', 'Uttar Pradesh'],
+    labels: ['Maharashtra', 'Delhi', 'Tamil Nadu', 'Karnataka', 'Uttar Pradesh', 'West Bengal'],
     datasets: [{
       label: 'Number of Workshops',
       data: [12, 8, 15, 10, 7, 9],
@@ -97,7 +100,8 @@ const WorkshopStatistics = ({ onNavigate }) => {
     }]
   };
 
-  const workshopsChartData = {
+  // Chart data for workshop types
+  const workshopTypeChartData = {
     labels: ['Python', 'Data Science', 'Machine Learning', 'Web Development', 'Cloud Computing', 'Cybersecurity'],
     datasets: [{
       label: 'Number of Workshops',
@@ -108,14 +112,16 @@ const WorkshopStatistics = ({ onNavigate }) => {
     }]
   };
 
-  const handleFilterChange = (field, value) => {
-    setFilters(prev => ({
-      ...prev,
+  // Handle filter changes
+  const updateFilter = (field, value) => {
+    setFilters(prevFilters => ({
+      ...prevFilters,
       [field]: value
     }));
   };
 
-  const clearFilters = () => {
+  // Reset all filters
+  const resetFilters = () => {
     setFilters({
       fromDate: '',
       toDate: '',
@@ -151,7 +157,7 @@ const WorkshopStatistics = ({ onNavigate }) => {
           <div className="filters-header">
             <h2 className="filters-title">Filters</h2>
             <button
-              onClick={clearFilters}
+              onClick={resetFilters}
               className="clear-button"
             >
               Clear
@@ -167,7 +173,7 @@ const WorkshopStatistics = ({ onNavigate }) => {
               <input
                 type="date"
                 value={filters.fromDate}
-                onChange={(e) => handleFilterChange('fromDate', e.target.value)}
+                onChange={(e) => updateFilter('fromDate', e.target.value)}
                 className="form-input"
               />
             </div>
@@ -180,7 +186,7 @@ const WorkshopStatistics = ({ onNavigate }) => {
               <input
                 type="date"
                 value={filters.toDate}
-                onChange={(e) => handleFilterChange('toDate', e.target.value)}
+                onChange={(e) => updateFilter('toDate', e.target.value)}
                 className="form-input"
               />
             </div>
@@ -192,7 +198,7 @@ const WorkshopStatistics = ({ onNavigate }) => {
               </label>
               <select
                 value={filters.workshop}
-                onChange={(e) => handleFilterChange('workshop', e.target.value)}
+                onChange={(e) => updateFilter('workshop', e.target.value)}
                 className="form-input"
               >
                 <option value="">All Workshops</option>
@@ -211,7 +217,7 @@ const WorkshopStatistics = ({ onNavigate }) => {
               </label>
               <select
                 value={filters.state}
-                onChange={(e) => handleFilterChange('state', e.target.value)}
+                onChange={(e) => updateFilter('state', e.target.value)}
                 className="form-input"
               >
                 <option value="">All States</option>
@@ -230,7 +236,7 @@ const WorkshopStatistics = ({ onNavigate }) => {
               </label>
               <select
                 value={filters.sortBy}
-                onChange={(e) => handleFilterChange('sortBy', e.target.value)}
+                onChange={(e) => updateFilter('sortBy', e.target.value)}
                 className="form-input"
               >
                 <option value="date">Date</option>
@@ -301,7 +307,7 @@ const WorkshopStatistics = ({ onNavigate }) => {
                   </tr>
                 </thead>
                 <tbody className="table-body">
-                  {tableData.map((row, index) => (
+                  {workshopData.map((row, index) => (
                     <tr 
                       key={row.srNo}
                       className="table-row"
@@ -367,13 +373,13 @@ const WorkshopStatistics = ({ onNavigate }) => {
               </button>
             </div>
             <div className="modal-body">
-              <Bar data={workshopsChartData} options={{ responsive: true, plugins: { legend: { position: 'top' } }} } />
+              <Bar data={workshopTypeChartData} options={{ responsive: true, plugins: { legend: { position: 'top' } }} } />
             </div>
           </div>
         </div>
       )}
     </div>
   );
-};
+}
 
 export default WorkshopStatistics;
