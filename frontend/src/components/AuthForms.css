@@ -346,59 +346,282 @@
 /* Responsive */
 @media (max-width: 768px) {
   .auth-container {
-    padding: 20px 16px;
+    padding: 16px 12px;
+    min-height: calc(100vh - 64px);
   }
 
   .auth-card {
     padding: 24px;
     border-radius: 12px;
+    margin: 0 auto;
   }
 
-  .auth-card-wide {
-    max-width: 100%;
-  }
-
-  .form-row {
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .form-group.small {
-    max-width: 100%;
-  }
-
-  .auth-title {
-    font-size: 20px;
+  .auth-header {
+    margin-bottom: 24px;
   }
 
   .auth-logo {
     width: 56px;
     height: 56px;
+    margin-bottom: 16px;
   }
 
   .logo-icon {
     width: 28px;
     height: 28px;
   }
-}
 
-@media (max-width: 480px) {
-  .auth-card {
-    padding: 20px;
+  .auth-title {
+    font-size: 22px;
+    margin-bottom: 8px;
+    line-height: 1.3;
   }
 
-  .auth-header {
-    margin-bottom: 24px;
+  .auth-subtitle {
+    font-size: 14px;
+    line-height: 1.5;
   }
-}
 
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .spinner {
-    animation: none;
+  .form-group {
+    margin-bottom: 16px;
+  }
+
+  .form-label {
+    font-size: 14px;
+    margin-bottom: 6px;
   }
 
   .form-input {
-    transition: none;
+    padding: 12px 14px;
+    font-size: 16px; /* Prevents zoom on iOS */
+    border-radius: 8px;
+  }
+
+  .auth-submit {
+    padding: 14px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    margin-top: 12px;
+    min-height: 48px;
+  }
+
+  .auth-footer {
+    margin-top: 20px;
+  }
+
+  .auth-divider {
+    margin: 20px 0;
+  }
+
+  .auth-switch {
+    font-size: 14px;
+    margin: 10px 0;
+  }
+
+  .demo-credentials {
+    margin-top: 20px;
+    padding: 12px;
+    border-radius: 8px;
+  }
+
+  .demo-title {
+    font-size: 12px;
+    margin-bottom: 6px;
+  }
+
+  .demo-info {
+    font-size: 12px;
+    margin: 3px 0;
+  }
+
+  .demo-info code {
+    font-size: 11px;
+    padding: 1px 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-container {
+    padding: 12px 8px;
+  }
+
+  .auth-card {
+    padding: 20px;
+    border-radius: 8px;
+  }
+
+  .auth-header {
+    margin-bottom: 20px;
+  }
+
+  .auth-logo {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 12px;
+  }
+
+  .logo-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .auth-title {
+    font-size: 20px;
+    margin-bottom: 6px;
+  }
+
+  .auth-subtitle {
+    font-size: 13px;
+  }
+
+  .form-group {
+    margin-bottom: 14px;
+  }
+
+  .form-label {
+    font-size: 13px;
+    margin-bottom: 4px;
+  }
+
+  .form-input {
+    padding: 12px 12px;
+    font-size: 16px;
+    border-radius: 6px;
+  }
+
+  .auth-submit {
+    padding: 12px 16px;
+    font-size: 15px;
+    border-radius: 6px;
+    margin-top: 10px;
+    min-height: 44px;
+  }
+
+  .auth-footer {
+    margin-top: 16px;
+  }
+
+  .auth-divider {
+    margin: 16px 0;
+  }
+
+  .auth-switch {
+    font-size: 13px;
+    margin: 8px 0;
+  }
+
+  .demo-credentials {
+    margin-top: 16px;
+    padding: 10px;
+    border-radius: 6px;
+  }
+
+  .demo-title {
+    font-size: 11px;
+    margin-bottom: 4px;
+  }
+
+  .demo-info {
+    font-size: 11px;
+    margin: 2px 0;
+  }
+
+  .demo-info code {
+    font-size: 10px;
+    padding: 1px 3px;
+  }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+  .form-input:focus {
+    transform: none;
+  }
+
+  .auth-submit {
+    transition: background-color 0.2s ease;
+  }
+
+  .auth-submit:hover {
+    transform: none;
+  }
+
+  .auth-submit:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+  }
+
+  .auth-link {
+    transition: color 0.2s ease;
+  }
+
+  .auth-link:hover {
+    transform: none;
+  }
+
+  .auth-link:active {
+    opacity: 0.7;
+    transition: opacity 0.1s ease;
+  }
+}
+
+/* Landscape mobile improvements */
+@media (max-height: 600px) and (orientation: landscape) {
+  .auth-container {
+    min-height: 100vh;
+    padding: 12px;
+  }
+
+  .auth-card {
+    padding: 20px;
+    max-width: 400px;
+  }
+
+  .auth-header {
+    margin-bottom: 16px;
+  }
+
+  .auth-logo {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 8px;
+  }
+
+  .logo-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .auth-title {
+    font-size: 18px;
+    margin-bottom: 4px;
+  }
+
+  .auth-subtitle {
+    font-size: 12px;
+  }
+
+  .form-group {
+    margin-bottom: 12px;
+  }
+
+  .form-input {
+    padding: 10px 12px;
+    font-size: 16px;
+  }
+
+  .auth-submit {
+    padding: 10px 16px;
+    font-size: 14px;
+    margin-top: 8px;
+    min-height: 40px;
+  }
+
+  .auth-footer {
+    margin-top: 12px;
+  }
+
+  .demo-credentials {
+    display: none; /* Hide on landscape to save space */
   }
 }
