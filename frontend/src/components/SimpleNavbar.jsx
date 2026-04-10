@@ -23,16 +23,7 @@ export default function Navbar() {
           <a href="/statistics" className="text-gray-600 hover:text-black">Statistics</a>
 
           {/* Auth Section */}
-          {!user.isAuthenticated && (
-            <>
-              <button className="border px-4 py-2 rounded-md hover:bg-gray-100">
-                Sign In
-              </button>
-              <button className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
-                Get Started
-              </button>
-            </>
-          )}
+          {!user.isAuthenticated && null}
 
           {/* Logged In */}
           {user.isAuthenticated && (
