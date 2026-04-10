@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./AuthForms.css";
+import ForgotPassword from "./ForgotPassword";
 
 const LoginForm = ({ onLogin, onSwitchToRegister }) => {
   const [formData, setFormData] = useState({
@@ -8,6 +9,7 @@ const LoginForm = ({ onLogin, onSwitchToRegister }) => {
   });
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const [showForgotPassword, setShowForgotPassword] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,6 +24,14 @@ const LoginForm = ({ onLogin, onSwitchToRegister }) => {
         [name]: null,
       }));
     }
+  };
+
+  const handleForgotPassword = () => {
+    setShowForgotPassword(true);
+  };
+
+  const handleBackToLogin = () => {
+    setShowForgotPassword(false);
   };
 
   const validateForm = () => {
@@ -86,7 +96,10 @@ const LoginForm = ({ onLogin, onSwitchToRegister }) => {
 
   return (
     <div className="auth-container">
-      <div className="auth-card">
+      {showForgotPassword ? (
+        <ForgotPassword onBackToLogin={handleBackToLogin} />
+      ) : (
+        <div className="auth-card">
         <div className="auth-header">
           <div className="auth-logo">
             <svg
@@ -210,7 +223,11 @@ const LoginForm = ({ onLogin, onSwitchToRegister }) => {
             </button>
           </p>
           <p className="auth-switch">
-            <button type="button" className="auth-link">
+            <button 
+              type="button" 
+              className="auth-link"
+              onClick={handleForgotPassword}
+            >
               Forgot password?
             </button>
           </p>
@@ -226,7 +243,8 @@ const LoginForm = ({ onLogin, onSwitchToRegister }) => {
             <code>instructor / demo123</code> - Instructor account
           </div>
         </div>
-      </div>
+        </div>
+      )}
     </div>
   );
 };

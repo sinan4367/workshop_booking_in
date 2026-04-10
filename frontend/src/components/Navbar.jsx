@@ -234,16 +234,7 @@ const Navbar = ({ user, currentPage, onNavigate, onLogout }) => {
           <div className="navbar-actions">
             {user?.isAuthenticated ? (
               <UserDropdown user={user} onLogout={onLogout} />
-            ) : (
-              <div className="auth-buttons">
-                <a href="/login" className="btn btn-secondary">
-                  Sign In
-                </a>
-                <a href="/register" className="btn btn-primary">
-                  Get Started
-                </a>
-              </div>
-            )}
+            ) : null}
 
             {/* Mobile menu button */}
             <button
