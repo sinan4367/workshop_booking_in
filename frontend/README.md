@@ -118,7 +118,7 @@ This project focuses on improving the UI/UX of the existing workshop booking pla
 <p align="center">
   <img src="./screenshots/workshop-types-old.jpeg" width="45%"/>
   <img src="./screenshots/workshop-types-new.jpeg" width="45%"/>
-  <img src="./screenshots/workshop-status-new" width="45%"/>
+  <img src="./screenshots/workshop-status-new.jpeg" width="45%"/>
 </p>
 <p align="center"><i>Improved organization and cleaner UI</i></p>
 ## ⚙️ Setup Instructions
