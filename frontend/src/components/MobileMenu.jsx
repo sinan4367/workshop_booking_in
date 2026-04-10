@@ -235,27 +235,7 @@ const MobileMenu = ({
                 </a>
               </div>
             </div>
-          ) : (
-            <div className="mobile-section">
-              <h3 className="section-title">Get Started</h3>
-              <div className="mobile-guest-actions">
-                <a
-                  href="/login"
-                  onClick={onClose}
-                  className="mobile-btn mobile-btn-primary"
-                >
-                  Sign In
-                </a>
-                <a
-                  href="/register"
-                  onClick={onClose}
-                  className="mobile-btn mobile-btn-secondary"
-                >
-                  Create Account
-                </a>
-              </div>
-            </div>
-          )}
+          ) : null}
         </div>
 
         {/* Footer */}
