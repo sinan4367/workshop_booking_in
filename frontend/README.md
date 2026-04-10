@@ -62,8 +62,8 @@ This project focuses on improving the UI/UX of the existing workshop booking pla
 
 ### 🔐 Authentication UI
 <p align="center">
-  <img src="./frontend/screenshots/auth-old.png" width="45%"/>
-  <img src="./frontend/screenshots/auth-new.png" width="45%"/>
+  <img src="./screenshots/auth-old.jpeg" width="45%"/>
+  <img src="./screenshots/auth-new.jpeg" width="45%"/>
 </p>
 <p align="center"><i>Improved form layout, spacing, and readability</i></p>
 
@@ -71,8 +71,8 @@ This project focuses on improving the UI/UX of the existing workshop booking pla
 
 ### 🏠 Homepage
 <p align="center">
-  <img src="./frontend/screenshots/homepage-old.png" width="45%"/>
-  <img src="./frontend/screenshots/homepage-new.png" width="45%"/>
+  <img src="./screenshots/homepage-old.jpeg" width="45%"/>
+  <img src="./screenshots/homepage-new.jpeg" width="45%"/>
 </p>
 <p align="center"><i>Cleaner layout with better visual hierarchy</i></p>
 
@@ -80,8 +80,8 @@ This project focuses on improving the UI/UX of the existing workshop booking pla
 
 ### 📝 Registration Page
 <p align="center">
-  <img src="./frontend/screenshots/registration-page-old.png" width="45%"/>
-  <img src="./frontend/screenshots/registration-page-new.png" width="45%"/>
+  <img src="./screenshots/registration-page-old.jpeg" width="45%"/>
+  <img src="./screenshots/registration-page-new.jpeg" width="45%"/>
 </p>
 <p align="center"><i>Improved form structure and user flow</i></p>
 
@@ -89,8 +89,8 @@ This project focuses on improving the UI/UX of the existing workshop booking pla
 
 ### 📊 Workshop Statistics
 <p align="center">
-  <img src="./frontend/screenshots/workshop-statistics-old.png" width="45%"/>
-  <img src="./frontend/screenshots/workshop-statistics-new.png" width="45%"/>
+  <img src="./screenshots/workshop-statistics-old.jpeg" width="45%"/>
+  <img src="./screenshots/workshop-statistics-new.jpeg" width="45%"/>
 </p>
 <p align="center"><i>Enhanced readability and layout organization</i></p>
 
@@ -98,8 +98,8 @@ This project focuses on improving the UI/UX of the existing workshop booking pla
 
 ### 📈 Charts UI
 <p align="center">
-  <img src="./frontend/screenshots/chart-old.png" width="45%"/>
-  <img src="./frontend/screenshots/chart-new.png" width="45%"/>
+  <img src="./screenshots/chart-old.jpeg" width="45%"/>
+  <img src="./screenshots/chart-new.jpeg" width="45%"/>
 </p>
 <p align="center"><i>Improved clarity and visual presentation of data</i></p>
 
@@ -107,8 +107,8 @@ This project focuses on improving the UI/UX of the existing workshop booking pla
 
 ### 🛠️ Propose Workshop
 <p align="center">
-  <img src="./frontend/screenshots/propose-workshop-old.png" width="45%"/>
-  <img src="./frontend/screenshots/propose-workshop-new.png" width="45%"/>
+  <img src="./screenshots/propose-workshop-old.jpeg" width="45%"/>
+  <img src="./screenshots/propose-workshop-new.jpeg" width="45%"/>
 </p>
 <p align="center"><i>Better form usability and structured layout</i></p>
 
@@ -116,11 +116,10 @@ This project focuses on improving the UI/UX of the existing workshop booking pla
 
 ### 📚 Workshop Types
 <p align="center">
-  <img src="./frontend/screenshots/workshop-types-old.png" width="45%"/>
-  <img src="./frontend/screenshots/workshop-types-new.png" width="45%"/>
+  <img src="./screenshots/workshop-types-old.jpeg" width="45%"/>
+  <img src="./screenshots/workshop-types-new.jpeg" width="45%"/>
 </p>
 <p align="center"><i>Improved organization and cleaner UI</i></p>
-
 ## ⚙️ Setup Instructions
 
 ```bash
